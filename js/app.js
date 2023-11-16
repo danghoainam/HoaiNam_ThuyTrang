@@ -395,7 +395,6 @@ const session = (() => {
         password: body.getAttribute("data-password"),
       })
       .then((res) => {
-        debugger;
         if (res.code == 200) {
           localStorage.removeItem("token");
           localStorage.setItem("token", res.data.token);
@@ -403,8 +402,6 @@ const session = (() => {
         }
       })
       .catch((err) => {
-        debugger;
-        alert(`Terdapat kesalahan: ${err}`);
         window.location.reload();
         return;
       });
@@ -439,7 +436,6 @@ const like = (() => {
     let id = button.getAttribute("data-uuid");
 
     if (!token) {
-      alert("Terdapat kesalahan, token kosong !");
       window.location.reload();
       return;
     }
@@ -466,9 +462,7 @@ const like = (() => {
             );
           }
         })
-        .catch((err) => {
-          alert(`Terdapat kesalahan: ${err}`);
-        });
+        .catch((err) => {});
     } else {
       await request("POST", "/api/comment/" + id)
         .token(token)
@@ -485,12 +479,10 @@ const like = (() => {
             );
           }
         })
-        .catch((err) => {
-          alert(`Terdapat kesalahan: ${err}`);
-        });
+        .catch((err) => {});
     }
 
-    info.innerText = info.getAttribute("data-suka") + " suka";
+    info.innerText = info.getAttribute("data-suka");
     button.disabled = false;
   };
 
@@ -536,23 +528,22 @@ const comment = (() => {
   // OK
   const send = async () => {
     let nama = formnama.value;
-    let hadir = parseInt(hadiran.value);
+    let hadir = 1;
     let komentar = formpesan.value;
     let token = localStorage.getItem("token") ?? "";
 
     if (token.length == 0) {
-      alert("Terdapat kesalahan, token kosong !");
       window.location.reload();
       return;
     }
 
     if (nama.length == 0) {
-      alert("nama tidak boleh kosong");
+      alert("Tên không được để trống");
       return;
     }
 
     if (nama.length >= 35) {
-      alert("panjangan nama maksimal 35");
+      alert("Độ dài tên tối đa là 35");
       return;
     }
 
@@ -562,7 +553,7 @@ const comment = (() => {
     }
 
     if (komentar.length == 0) {
-      alert("pesan tidak boleh kosong");
+      alert("Lời chúc không được để trống");
       return;
     }
 
@@ -579,7 +570,7 @@ const comment = (() => {
       .token(token)
       .body({
         nama: nama,
-        hadir: hadir == 1,
+        hadir: 1,
         komentar: komentar,
       })
       .then((res) => {
@@ -588,9 +579,7 @@ const comment = (() => {
           isSuccess = true;
         }
       })
-      .catch((err) => {
-        alert(`Terdapat kesalahan: ${err}`);
-      });
+      .catch((err) => {});
 
     if (isSuccess) {
       await pagination.reset();
@@ -617,7 +606,6 @@ const comment = (() => {
     let token = localStorage.getItem("token") ?? "";
 
     if (token.length == 0) {
-      alert("Terdapat kesalahan, token kosong !");
       window.location.reload();
       return;
     }
@@ -634,12 +622,12 @@ const comment = (() => {
           kirim.style.display = "none";
           batal.style.display = "block";
           balas.style.display = "block";
-
+          console.log(res);
           tempID = id;
 
           BALAS.innerHTML = `
                     <div class="my-3">
-                        <h6>Balasan</h6>
+                        <h6>Trả lời</h6>
                         <div id="id-balasan" data-uuid="${id}" class="card-body bg-light shadow p-3 rounded-4">
                             <div class="d-flex flex-wrap justify-content-between align-items-center">
                                 <p class="text-dark text-truncate m-0 p-0" style="font-size: 0.95rem;">
@@ -661,7 +649,6 @@ const comment = (() => {
       })
       .catch((err) => {
         resetForm();
-        alert(`Terdapat kesalahan: ${err}`);
       });
 
     document.getElementById("ucapan").scrollIntoView({ behavior: "smooth" });
@@ -676,12 +663,12 @@ const comment = (() => {
             <div class="d-flex flex-wrap justify-content-start align-items-center">
                 <button style="font-size: 0.8rem;" onclick="comment.balasan(this)" data-uuid="${
                   data.uuid
-                }" class="btn btn-sm btn-outline-dark rounded-3 py-0">Balas</button>
+                }" class="btn btn-sm btn-outline-dark rounded-3 py-0">Trả lời</button>
                 ${
                   owns.has(data.uuid)
                     ? `
-                <button style="font-size: 0.8rem;" onclick="comment.edit(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-3 py-0 ms-1">Ubah</button>
-                <button style="font-size: 0.8rem;" onclick="comment.hapus(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-3 py-0 ms-1">Hapus</button>`
+                <button style="font-size: 0.8rem;" onclick="comment.edit(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-3 py-0 ms-1">Chỉnh sửa</button>
+                <button style="font-size: 0.8rem;" onclick="comment.hapus(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-3 py-0 ms-1">Xóa</button>`
                     : ""
                 }
             </div>
@@ -691,7 +678,7 @@ const comment = (() => {
                 <div class="d-flex justify-content-start align-items-center">
                     <p class="my-0 mx-1" data-suka="${data.like.love}">${
       data.like.love
-    } suka</p>
+    }</p>
                     <i class="py-1 me-1 p-0 ${
                       likes.has(data.uuid)
                         ? "fa-solid fa-heart text-danger"
@@ -706,7 +693,7 @@ const comment = (() => {
   // OK
   const innerCard = (comment) => {
     let result = "";
-
+    console.log(comment);
     comment.forEach((data) => {
       result += `
             <div class="card-body border-start bg-light py-2 ps-2 pe-0 my-2 ms-2 me-0" id="${
@@ -733,6 +720,7 @@ const comment = (() => {
 
   // OK
   const renderCard = (data) => {
+    console.log(data);
     const DIV = document.createElement("div");
     DIV.classList.add("mb-3");
     DIV.innerHTML = `
@@ -769,7 +757,6 @@ const comment = (() => {
 
     let token = localStorage.getItem("token") ?? "";
     if (token.length == 0) {
-      alert("Terdapat kesalahan, token kosong !");
       window.location.reload();
       return;
     }
@@ -826,23 +813,22 @@ const comment = (() => {
     let id = document.getElementById("id-balasan").getAttribute("data-uuid");
 
     if (token.length == 0) {
-      alert("Terdapat kesalahan, token kosong !");
       window.location.reload();
       return;
     }
 
     if (nama.length == 0) {
-      alert("nama tidak boleh kosong");
+      alert("Tên không được để trống");
       return;
     }
 
     if (nama.length >= 35) {
-      alert("panjangan nama maksimal 35");
+      alert("Tên không được dài quá 35 ký tự");
       return;
     }
 
     if (komentar.length == 0) {
-      alert("pesan tidak boleh kosong");
+      alert("Lời chúc không được để trống");
       return;
     }
 
@@ -868,9 +854,7 @@ const comment = (() => {
           owns.set(res.data.uuid, res.data.own);
         }
       })
-      .catch((err) => {
-        alert(`Terdapat kesalahan: ${err}`);
-      });
+      .catch((err) => {});
 
     if (isSuccess) {
       await ucapan();
@@ -895,7 +879,6 @@ const comment = (() => {
     let komentar = formpesan.value;
 
     if (token.length == 0) {
-      alert("Terdapat kesalahan, token kosong !");
       window.location.reload();
       return;
     }
@@ -904,12 +887,11 @@ const comment = (() => {
       document.getElementById(id).getAttribute("data-parent") === "true" &&
       hadir == 0
     ) {
-      alert("silahkan pilih kehadiran");
       return;
     }
 
     if (komentar.length == 0) {
-      alert("pesan tidak boleh kosong");
+      alert("Lời chúc không được để trống");
       return;
     }
 
@@ -933,9 +915,7 @@ const comment = (() => {
           isSuccess = true;
         }
       })
-      .catch((err) => {
-        alert(`Terdapat kesalahan: ${err}`);
-      });
+      .catch((err) => {});
 
     if (isSuccess) {
       await ucapan();
@@ -954,7 +934,7 @@ const comment = (() => {
 
   // OK
   const hapus = async (button) => {
-    if (!confirm("Kamu yakin ingin menghapus?")) {
+    if (!confirm("Bạn có muốn xóa lời chúc không?")) {
       return;
     }
 
@@ -962,7 +942,6 @@ const comment = (() => {
     let id = button.getAttribute("data-uuid");
 
     if (token.length == 0) {
-      alert("Terdapat kesalahan, token kosong !");
       window.location.reload();
       return;
     }
@@ -980,9 +959,7 @@ const comment = (() => {
           isSuccess = true;
         }
       })
-      .catch((err) => {
-        alert(`Terdapat kesalahan: ${err}`);
-      });
+      .catch((err) => {});
 
     if (isSuccess) {
       ucapan();
@@ -1002,7 +979,6 @@ const comment = (() => {
     let token = localStorage.getItem("token") ?? "";
 
     if (token.length == 0) {
-      alert("Terdapat kesalahan, token kosong !");
       window.location.reload();
       return;
     }
@@ -1036,9 +1012,7 @@ const comment = (() => {
             .scrollIntoView({ behavior: "smooth" });
         }
       })
-      .catch((err) => {
-        alert(`Terdapat kesalahan: ${err}`);
-      });
+      .catch((err) => {});
 
     button.disabled = false;
     button.innerText = tmp;
