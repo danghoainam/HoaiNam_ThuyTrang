@@ -136,3 +136,11 @@ footer {
   object-fit: cover;
   object-position: 0px -200px;
 }
+@media only screen and (max-width: 600px) {
+  .img-wedding {
+    width: 100% !important;
+    height: 300px !important;
+    object-fit: cover;
+    object-position: 0px 0px !important;
+  }
+}
