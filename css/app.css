@@ -119,6 +119,9 @@ footer {
     width: 65%;
     margin: auto;
   }
+  #show-modal-image {
+    width: 60% !important;
+  }
 }
 .img-process {
   width: 14rem;
