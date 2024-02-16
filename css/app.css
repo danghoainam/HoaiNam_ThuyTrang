@@ -1,14 +1,35 @@
+:root {
+  --scrollbar-color: #e6cbdb; /* red */
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color) !important;
+}
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 15px;
+  background-color: lightgrey;
+}
 html {
   scroll-behavior: smooth;
 }
-
+.container h4 {
+  color: white;
+}
+.container {
+  color: white !important;
+}
 body {
   font-family: "Josefin Sans", sans-serif;
   padding: 0 !important;
   -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+  scrollbar-width: hidden;
+  scrollbar-color: inherit;
 
+  background-color: #e6cbdb !important;
+}
+#loading {
+  background-color: #e6cbdb !important;
+}
 body::-webkit-scrollbar {
   display: none;
 }
@@ -104,15 +125,49 @@ body::-webkit-scrollbar {
 }
 
 .dark-section {
-  background-color: #111111 !important;
+  background-color: #ffffff !important;
   margin-top: -0.4rem;
   margin-bottom: -0.4rem;
+  color: #d295c4 !important;
 }
-
+.dark-section .font-esthetic {
+  src: url("../assets/font/UNI_DA_Sacramento.ttf");
+  font-family: "Name-Of-Font", cursive !important;
+  color: #d295c4 !important;
+}
+.dark-section p {
+  color: #d295c4 !important;
+}
+.dark-section small {
+  color: #d295c4 !important;
+}
+.dark-section h2 {
+  color: #d295c4 !important;
+}
+.dark-section a {
+  color: #d295c4 !important;
+}
 footer {
-  background-color: #111111 !important;
+  background-color: #ffffff !important;
   margin-top: -0.4rem;
   padding-bottom: 4rem;
+  color: #d295c4 !important;
+}
+footer .font-esthetic {
+  src: url("../assets/font/UNI_DA_Sacramento.ttf");
+  font-family: "Name-Of-Font", cursive !important;
+  color: #d295c4 !important;
+}
+.text-light {
+  color: #d295c4 !important;
+}
+.page-link {
+  background-color: #d295c4 !important;
+  color: white !important;
+}
+.disabled > .page-link,
+.page-link.disabled {
+  border-color: white !important;
 }
 @media only screen and (min-width: 1200px) {
   .text-pc {
@@ -160,8 +215,22 @@ footer {
   gap: 10px;
 }
 .item-gird {
-  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+  border: var(--bs-border-width) var(--bs-border-style) #d295c4 !important;
   border-radius: 10px;
   padding: 10px;
   box-shadow: var(--bs-box-shadow) !important;
+}
+.border {
+  border: var(--bs-border-width) var(--bs-border-style) #d295c4 !important;
+}
+.form-control {
+  background-color: #ffffff !important;
+  border: none;
+  box-shadow: none;
+}
+#navbar-menus {
+  background-color: #8a3867f2 !important;
+}
+#welcome {
+  background: #e6cbdb;
 }
