@@ -146,4 +146,22 @@ footer {
     object-fit: cover;
     object-position: 0px 0px !important;
   }
+  .d-gird {
+    display: block !important;
+    padding-bottom: 20px;
+  }
+  .item-gird {
+    margin-top: 20px;
+  }
+}
+.d-gird {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+.item-gird {
+  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: var(--bs-box-shadow) !important;
 }
