@@ -1,17 +1,10 @@
 :root {
-  --scrollbar-color: #e6cbdb; /* red */
   --bs-box-shadow: 0 0.5rem 1rem rgb(254 224 224 / 15%) !important;
 }
-::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-color) !important;
-}
-::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 15px;
-  background-color: lightgrey;
-}
+
 html {
-  scroll-behavior: smooth;
+  scroll-behavior:smooth;
+  scrollbar-width: none !important;
 }
 .container h4 {
   color: white;
@@ -20,16 +13,15 @@ html {
   color: white !important;
 }
 body {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: 'Josefin Sans', sans-serif !important;
   padding: 0 !important;
-  -ms-overflow-style: none;
-  scrollbar-width: hidden;
-  scrollbar-color: inherit;
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
 
-  background-color: #e6cbdb !important;
+  background-color: #f2bed1 !important;
 }
 #loading {
-  background-color: #e6cbdb !important;
+  background-color: #f2bed1 !important;
 }
 body::-webkit-scrollbar {
   display: none;
@@ -129,41 +121,41 @@ body::-webkit-scrollbar {
   background-color: #ffffff !important;
   margin-top: -0.4rem;
   margin-bottom: -0.4rem;
-  color: #d295c4 !important;
+  color: #8a3867f2  !important;
 }
 .dark-section .font-esthetic {
   src: url("../assets/font/UNI_DA_Sacramento.ttf");
   font-family: "Name-Of-Font", cursive !important;
-  color: #d295c4 !important;
+  color: #8a3867f2  !important;
 }
 .dark-section p {
-  color: #d295c4 !important;
+  color: #8a3867f2  !important;
 }
 .dark-section small {
-  color: #d295c4 !important;
+  color: #8a3867f2  !important;
 }
 .dark-section h2 {
-  color: #d295c4 !important;
+  color: #8a3867f2  !important;
 }
 .dark-section a {
-  color: #d295c4 !important;
+  color: #8a3867f2  !important;
 }
 footer {
   background-color: #ffffff !important;
   margin-top: -0.4rem;
   padding-bottom: 4rem;
-  color: #d295c4 !important;
+  color: #8a3867f2  !important;
 }
 footer .font-esthetic {
   src: url("../assets/font/UNI_DA_Sacramento.ttf");
   font-family: "Name-Of-Font", cursive !important;
-  color: #d295c4 !important;
+  color: #8a3867f2  !important;
 }
 .text-light {
-  color: #d295c4 !important;
+  color: #8a3867f2  !important;
 }
 .page-link {
-  background-color: #d295c4 !important;
+  background-color: #8a3867f2  !important;
   color: white !important;
 }
 .disabled > .page-link,
@@ -203,11 +195,14 @@ footer .font-esthetic {
     object-position: 0px 0px !important;
   }
   .d-gird {
-    display: block !important;
+    grid-template-columns: 1fr !important;
     padding-bottom: 20px;
   }
   .item-gird {
     margin-top: 20px;
+  }
+  .font-esthetic {
+    font-size: 1.5rem !important;
   }
 }
 .d-gird {
@@ -216,22 +211,32 @@ footer .font-esthetic {
   gap: 10px;
 }
 .item-gird {
-  border: var(--bs-border-width) var(--bs-border-style) #d295c4 !important;
+  border: var(--bs-border-width) var(--bs-border-style) #8a3867f2  !important;
   border-radius: 10px;
   padding: 10px;
   box-shadow: var(--bs-box-shadow) !important;
 }
 .border {
-  border: var(--bs-border-width) var(--bs-border-style) #d295c4 !important;
+  border: var(--bs-border-width) var(--bs-border-style) #8a3867f2  !important;
 }
 .form-control {
   background-color: #ffffff !important;
   border: none;
   box-shadow: none;
 }
-#navbar-menus {
-  background-color: #8a3867f2 !important;
-}
+
 #welcome {
-  background: #e6cbdb;
+  background: #f2bed1;
+}
+@keyframes love {
+  50% {
+      transform: translateY(1rem);
+  }
+}
+
+.animate-love {
+  animation: love 5s ease-in-out infinite;
+}
+#navbar-menus {
+  background-color: #e58ab8!important;
 }
