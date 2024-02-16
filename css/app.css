@@ -1,5 +1,6 @@
 :root {
   --scrollbar-color: #e6cbdb; /* red */
+  --bs-box-shadow: 0 0.5rem 1rem rgb(254 224 224 / 15%) !important;
 }
 ::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-color) !important;
