@@ -401,8 +401,8 @@ const session = (() => {
         }
       })
       .catch((err) => {
-        window.location.reload();
-        return;
+        // window.location.reload();
+        // return;
       });
   };
 
