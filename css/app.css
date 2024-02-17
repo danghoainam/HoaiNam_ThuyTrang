@@ -199,7 +199,7 @@ footer .font-esthetic {
 
   }
   .last-icon {
-    top: 40px !important;
+    top: -40px !important;
   }
   .d-gird {
     grid-template-columns: 1fr !important;
