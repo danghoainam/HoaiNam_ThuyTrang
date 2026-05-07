@@ -229,7 +229,14 @@ const util = (() => {
     await animation();
   };
 
+  const animate = (el, delay, className) => {
+    setTimeout(() => {
+      el.classList.add(className);
+    }, delay);
+  };
+
   return {
+    animate: animate,
     buka: buka,
     tamu: tamu,
     modal: modal,
@@ -401,7 +408,7 @@ const session = (() => {
         }
       })
       .catch((err) => {
-        window.location.reload();
+        console.error("Lỗi đăng nhập API:", err);
         return;
       });
   };

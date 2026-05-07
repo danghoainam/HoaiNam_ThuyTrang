@@ -102,6 +102,15 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/app.css" />
+    <script>
+      window.util = {
+        animate: (el, delay, className) => {
+          setTimeout(() => {
+            el.classList.add(className);
+          }, delay);
+        }
+      };
+    </script>
   </head>
 
   <body
