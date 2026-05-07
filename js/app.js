@@ -68,7 +68,7 @@ const request = (method, path) => {
   };
 };
 
-const util = (() => {
+Object.assign(util, (() => {
   const opacity = (nama) => {
     let nm = document.getElementById(nama);
     let op = parseInt(nm.style.opacity);
@@ -245,7 +245,7 @@ const util = (() => {
     escapeHtml: escapeHtml,
     opacity: opacity,
   };
-})();
+})());
 
 const progress = (() => {
   const assets = document.querySelectorAll("img");

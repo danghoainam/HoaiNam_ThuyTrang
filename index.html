@@ -103,12 +103,13 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/app.css" />
     <script>
-      window.util = {
-        animate: (el, delay, className) => {
-          setTimeout(() => {
+      var util = util || {};
+      util.animate = util.animate || function(el, delay, className) {
+        setTimeout(function() {
+          if (el && el.classList) {
             el.classList.add(className);
-          }, delay);
-        }
+          }
+        }, delay);
       };
     </script>
   </head>
